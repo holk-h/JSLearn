@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>randomColour</title>
+</head>
+<body style="text-align: center">
+<div id="div" style="width: 500px; height: 500px; background-color: black; margin: auto"></div>
+<div id="div1"></div>
+<script>
+    let oDiv = document.getElementById("div");
+    let oDiv1 = document.getElementById("div1");
+
+    setInterval(function () {
+        let str = "rgba("+parseInt(Math.random()*256)+","+
+            parseInt(Math.random()*256)+","+parseInt(Math.random()*256)+","+"1)";
+        oDiv.style.backgroundColor = str;
+        oDiv1.innerHTML = str;
+    },1000)
+
+</script>
+</body>
+</html>

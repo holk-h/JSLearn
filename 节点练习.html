@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点练习</title>
+</head>
+<body>
+<div id="div">
+    div
+</div>
+<button id="btn" onclick="clk()">点击操作</button>
+<button id="btn1" onclick="clk1()">点击替换</button>
+
+<script>
+    function clk() {
+        let oP = document.createElement("p");
+        let oTxt = document.createTextNode("oh my fucking god!~");
+        oP.appendChild(oTxt);
+
+        document.getElementById("div").appendChild(oP);
+        document.body.insertBefore(oP,document.getElementById("div"));
+    }
+
+    function clk1() {
+        let oTxt1 = document.createTextNode("oh my fucking god!~");
+
+        document.body.replaceChild(oTxt1,document.getElementById("div"));
+    }
+</script>
+
+</body>
+</html>

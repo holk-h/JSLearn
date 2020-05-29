@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+<div id="div" style="border: 1px #000000 solid;width: 500px;height: 60px;text-align: center"></div>
+<button onclick="setInterval(getTime,1)">点击开始</button>
+<script>
+    function getTime(){
+        let date = new Date();
+
+        let year = date.getFullYear();
+        let month = date.getMonth();
+        let day = date.getDate();
+        let hour = date.getHours();
+        let min = date.getMinutes();
+        let sec = date.getSeconds();
+        let time = date.getTime();
+
+        let date1 = year + "年" + month+"月" + day+"日" + hour +":"+ min +":"+ sec +'</br>'+ time;
+
+        document.getElementById("div").innerHTML = date1 + "</br>"
+    }
+
+</script>
+</body>
+</html>

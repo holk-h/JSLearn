@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>冒泡排序</title>
+</head>
+<body>
+<script>
+    let arr = [2,3,1,6,6,3,2,6,9,10];
+    let time = new Date();
+    let time0 = new Date();
+    let time1 = time.getTime();
+
+    for (let i = 0; i <= arr.length; i++){
+        if (arr[i] > arr[i+1]){
+            arr[i+1] = arr[i];
+        }
+    }
+
+    let time2 = time0.getTime();
+
+    alert(arr);
+    alert(time2 - time1);
+</script>
+</body>
+</html>

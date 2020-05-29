@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <style>
+        #div2{
+            /*border: 1px blueviolet solid;*/
+            width: 300px;
+            height: 500px;
+            background-color: antiquewhite;
+        }
+        #div1{
+            width: 300px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+        #div2 div{
+            border-bottom: 1px dashed gray;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="div1">
+    <label for="ipt"></label><input id="ipt">
+    <button onclick="newf()">新建</button>
+    <button onclick="copyf()">复制</button>
+    <button onclick="delf()">删除</button>
+</div>
+<div id="div2"></div>
+
+<script>
+    let oDiv2 = document.getElementById("div2");
+    let oIpt = document.getElementById("ipt");
+
+    function newf() {
+        if (oIpt.value){
+            let newDiv = document.createElement("div");
+            let newText = document.createTextNode(oIpt.value);
+            newDiv.appendChild(newText);
+            newDiv.style.backgroundColor = "rgba("+parseInt(Math.random()*256)+","+
+                parseInt(Math.random()*256)+","+parseInt(Math.random()*256)+","+"1)"
+
+            oDiv2.appendChild(newDiv);
+            oIpt.value = "";
+        }else {
+            alert("未输入");
+        }
+    }
+
+    function copyf() {
+        let newDiv2 = oDiv2.lastElementChild.cloneNode(true);
+        oDiv2.appendChild(newDiv2);
+    }
+
+    function delf() {
+        oDiv2.removeChild(oDiv2.lastElementChild);
+    }
+</script>
+</body>
+</html>
