@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        #in_div div{
+            display: none;
+        }
+    </style>
+</head>
+<body style="text-align: center;">
+<div id="div" style="margin: auto">
+    <button>第一个</button>
+    <button>第二个</button>
+    <button>第三个</button>
+
+    <div id="in_div" style="border: 1px #cd4a4a solid; width: 300px; height: 500px; margin: auto;">
+        <div style="display: block">111111111</div>
+        <div>222222222</div>
+        <div>333333333</div>
+    </div>
+</div>
+<script>
+    let oDiv = document.getElementById("div");
+    let oInDiv = document.getElementById("in_div");
+    let oInnDiv = oInDiv.getElementsByTagName("div");
+    let oBtn = oDiv.getElementsByTagName("button");
+
+    for (let i = 0; i < oBtn.length; i++){
+        oBtn[i].index = i;
+        oBtn[i].onclick = function () {
+            for (let i = 0; i < oBtn.length; i++){
+                oBtn[i].style.backgroundColor = '';
+                oInnDiv[i].style.display = 'none';
+            }
+            this.style.backgroundColor = 'yellow';
+            oInnDiv[this.index].style.display = 'block';
+        }
+    }
+</script>
+</body>
+</html>
