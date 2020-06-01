@@ -5,13 +5,17 @@
     <title>test</title>
 </head>
 <body>
-<button id="btn" onclick="cl()">点击操作</button>
+<div id="div">1</div>
+<div id="div1" style="left: auto;top: auto; position: absolute">666</div>
 <script>
-    function cl() {
-        alert("666");
-        function cl1() {
-            alert("777");
-        }
+    let oDiv = document.getElementById("div");
+    let oDiv1 = document.getElementById("div1");
+
+    document.onmousemove = function (ev) {
+        oDiv.innerHTML = ev.clientX +","+ ev.clientY;
+        oDiv1.innerHTML = oDiv1.style.left +", "+ oDiv1.style.top;
+        oDiv1.style.left = ev.clientX +5+ 'px';
+        oDiv1.style.top = ev.clientY +5+ "px";
     }
 </script>
 </body>
