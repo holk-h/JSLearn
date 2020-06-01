@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托</title>
+</head>
+<body>
+<button id="btn">添加li</button>
+<ul id="ul1">
+    <li>1111</li>
+    <li>2222</li>
+    <li>3333</li>
+    <li>4444</li>
+    <li>5555</li>
+</ul>
+<script>
+    let oUl1 = document.getElementById("ul1");
+    let oBtn = document.getElementById("btn");
+
+    oUl1.onclick = function (ev) {
+        let et = ev.target;
+        if (et.nodeName.toLowerCase() === "li"){
+            et.style.backgroundColor = "red";
+        }
+    }
+
+    oBtn.onclick = function(){
+        let newNode = document.createElement("li");
+        newNode.innerHTML = "new";
+        oUl1.appendChild(newNode);
+    }
+
+
+</script>
+</body>
+</html>
