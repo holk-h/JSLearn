@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滑动条</title>
+</head>
+<body>
+<div id="board" style="width: 1000px; height: 50px; border: 1px black solid" >
+    <div id="block" style="width: 50px; height: 50px; background-color: #00a8e6; position: absolute "></div>
+</div>
+<span>刷新后你的滑动状态仍然会保持</span>
+<br>
+<span id="span1"></span>
+<script>
+    let oBoard = document.getElementById("board");
+    let oBlock = document.getElementById("block");
+
+    document.onselectstart = function(){
+        return false;
+    }
+
+    oBlock.style.left = localStorage.getItem("position") + "px" ? localStorage.getItem("position") + "px" : 0 + "px";
+    oBlock.onmousedown = function (ev) {
+        let xpy = ev.offsetX;
+        oBlock.style.cursor = "move";
+        document.onmousemove = function (ev){
+            if (ev.clientX - xpy >= 959){
+                oBlock.style.left = 959 + "px";
+            }else if (ev.clientX - xpy <= 9){
+                oBlock.style.left = 9 + "px";
+            }else {
+                oBlock.style.left = ev.clientX - xpy + "px";
+                document.getElementById("span1").innerHTML = oBlock.style.left;
+            }
+        }
+    }
+
+    document.onmouseup = function (ev) {
+        document.getElementById("span1").innerHTML = oBlock.style.left
+        localStorage.setItem("position",(parseInt(oBlock.style.left)).toString())
+        document.onmousemove = null;
+    }
+</script>
+</body>
+</html>
