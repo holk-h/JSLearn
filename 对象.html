@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object</title>
+</head>
+<body>
+<script>
+    //混合法构建对象
+    function Dog(name,type,age) {
+        this.name = name;
+        this.type = type;
+        this.age = age;
+    }
+    Dog.prototype = {
+        run : function () {
+            alert(`${this.type} can run`);
+        }
+    }
+
+    let dog = new Dog("小白","比熊",8);
+    dog.run();
+
+    alert(dog instanceof Object);
+</script>
+</body>
+</html>
