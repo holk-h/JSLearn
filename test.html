@@ -5,8 +5,32 @@
     <title>test</title>
 </head>
 <body>
+<div id="block" style="width: 100px; height: 100px; background-color: transparent; position: absolute"></div>
+<div>"example"</div>
 <script>
-    alert(Array.prototype);
+/*    //面向对象
+    function Drag(id) {
+        this.oDiv = document.getElementById(id);
+        this.oDiv.onmousedown = this.funcDown;
+        document.onmouseup = this.funcUp;
+    }
+    Drag.prototype = {
+        funcDown: function (ev) {
+            this.l = ev.offsetX;
+            this.t = ev.offsetY;
+            document.onmousemove = this.funcMove;
+        },
+        funcMove: function (ev) {
+            this.oDiv.style.left = ev.clientX - this.l + "px";
+            this.oDiv.style.top = ev.clientY - this.t + "px";
+            alert("down");
+        },
+        funcUp: function (ev) {
+            this.funcMove = null;
+        }
+    }
+
+    new Drag("block");*/
 </script>
 </body>
 </html>

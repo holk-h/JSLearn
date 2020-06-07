@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag</title>
+</head>
+<body>
+<div id="block" style="width: 100px; height: 100px; background-color: greenyellow; position: absolute"></div>
+<script>
+    //面向对象
+    function Drag(id) {
+        //this = Object
+        this.oDiv = document.getElementById(id);
+        this.oDiv.onmousedown = this.funcDown.bind(this);
+        document.onmouseup = this.funcUp.bind(this);
+    }
+    Drag.prototype.funcDown = function (ev) {
+        //bind前，this = div
+        this.l = ev.offsetX;
+        this.t = ev.offsetY;
+        document.onmousemove = this.funcMove.bind(this);
+    }
+    Drag.prototype.funcMove = function (ev) {
+        //bind前，this = document
+        this.oDiv.style.left = ev.clientX - this.l + "px";
+        this.oDiv.style.top = ev.clientY - this.t + "px";
+    }
+    Drag.prototype.funcUp = function (ev) {
+        document.onmousemove = null;
+    }
+
+    new Drag("block");
+
+    //面向过程
+/*      let oDiv = document.getElementById("block");
+        oDiv.onmousedown = function (ev) {
+        let l = ev.offsetX;
+        let t = ev.offsetY;
+        document.onmousemove = function (ev) {
+            let oStyle = oDiv.style;
+            oStyle.left = ev.clientX - l +"px";
+            oStyle.top = ev.clientY - t +"px";
+            document.getElementById("div1").innerHTML = ev.clientX;
+        }
+    }
+    document.onmouseup = function (){
+        document.onmousemove = null;
+    };*/
+
+</script>
+</body>
+</html>

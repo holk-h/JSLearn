@@ -21,6 +21,15 @@
     let dog = new Dog("小白","比熊",8);
     dog.run();
 
+    class Teddy extends Dog{
+        constructor(name, type, age, colour) {
+            super(name, type, age);
+            this.colour = colour;
+        }
+    }
+    let teddy = new Teddy();
+    alert()
+
     alert(dog instanceof Object);
 </script>
 </body>
