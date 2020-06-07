@@ -25,19 +25,39 @@
             //bind前，this = document
             this.oDiv.style.left = ev.clientX - this.l + "px";
             this.oDiv.style.top = ev.clientY - this.t + "px";
+            this.oDiv.innerHTML = this.oDiv.style.top;
         },
         funcUp: function (ev) {
             document.onmousemove = null;
         }
     }
 
-    new Drag("block");
+    //new Drag("block");
 
-    class limDrag extends Drag{
-        constructor(id) {
-            super(id);
+    //继承实现限制出上界（懒得写其它的了）
+    class LimitDrag extends Drag {
+        constructor(props) {
+            super(props);
+            Drag.prototype.funcMove = function (ev) {
+                let num = parseInt(this.oDiv.style.top.replace(/[^0-9-]/ig,""));
+
+                if (ev.clientX - this.l - 100 <= document.body.clientWidth){
+                    this.oDiv.style.left = ev.clientX - this.l + "px";
+                } else {
+                    this.oDiv.style.left = document.body.clientWidth + "px";
+                }
+
+                if (ev.clientY - this.t >= 0) {
+                    this.oDiv.style.top = ev.clientY - this.t + "px";
+                } else {
+                    this.oDiv.innerHTML = num.toString();
+                    this.oDiv.style.top = 0 + "px";
+                }
+            }
         }
     }
+    new LimitDrag("block","blue");
+
     //面向过程
 /*      let oDiv = document.getElementById("block");
         oDiv.onmousedown = function (ev) {
