@@ -14,23 +14,30 @@
         this.oDiv.onmousedown = this.funcDown.bind(this);
         document.onmouseup = this.funcUp.bind(this);
     }
-    Drag.prototype.funcDown = function (ev) {
-        //bind前，this = div
-        this.l = ev.offsetX;
-        this.t = ev.offsetY;
-        document.onmousemove = this.funcMove.bind(this);
-    }
-    Drag.prototype.funcMove = function (ev) {
-        //bind前，this = document
-        this.oDiv.style.left = ev.clientX - this.l + "px";
-        this.oDiv.style.top = ev.clientY - this.t + "px";
-    }
-    Drag.prototype.funcUp = function (ev) {
-        document.onmousemove = null;
+    Drag.prototype = {
+        funcDown: function (ev) {
+            //bind前，this = div
+            this.l = ev.offsetX;
+            this.t = ev.offsetY;
+            document.onmousemove = this.funcMove.bind(this);
+        },
+        funcMove: function (ev) {
+            //bind前，this = document
+            this.oDiv.style.left = ev.clientX - this.l + "px";
+            this.oDiv.style.top = ev.clientY - this.t + "px";
+        },
+        funcUp: function (ev) {
+            document.onmousemove = null;
+        }
     }
 
     new Drag("block");
 
+    class limDrag extends Drag{
+        constructor(id) {
+            super(id);
+        }
+    }
     //面向过程
 /*      let oDiv = document.getElementById("block");
         oDiv.onmousedown = function (ev) {
