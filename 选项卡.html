@@ -22,7 +22,32 @@
     </div>
 </div>
 <script>
-    let oDiv = document.getElementById("div");
+    //面向对象版
+    function TabCard(id) {
+        this.oDiv = document.getElementById(id);
+        this.oInDiv = this.oDiv.getElementsByTagName("div");
+        this.oInnDiv = this.oInDiv[0].getElementsByTagName("div");
+        this.oBtn = this.oDiv.getElementsByTagName("button");
+        for (let i = 0; i < this.oBtn.length; i++){
+            this.oBtn[i].index = i;
+            this.oBtn[i].onclick = this.Switch.bind(this);
+        }
+    }
+    TabCard.prototype = {
+        Switch: function (ev) {
+            for (let i = 0; i < this.oBtn.length; i++) {
+                this.oBtn[i].style.backgroundColor = '';
+                this.oInnDiv[i].style.display = 'none';
+            }
+            ev.target.style.backgroundColor = 'yellow';
+            this.oInnDiv[ev.target.index].style.display = 'block';
+        }
+    }
+
+    new TabCard("div");
+
+    //面向过程版
+/*  let oDiv = document.getElementById("div");
     let oInDiv = document.getElementById("in_div");
     let oInnDiv = oInDiv.getElementsByTagName("div");
     let oBtn = oDiv.getElementsByTagName("button");
@@ -37,7 +62,7 @@
             this.style.backgroundColor = 'yellow';
             oInnDiv[this.index].style.display = 'block';
         }
-    }
+    }*/
 </script>
 </body>
 </html>
