@@ -29,6 +29,7 @@
         this.oInnDiv = this.oInDiv[0].getElementsByTagName("div");
         this.oBtn = this.oDiv.getElementsByTagName("button");
         for (let i = 0; i < this.oBtn.length; i++){
+            /*this.oBtn[i].setAttribute("index",i);*/
             this.oBtn[i].index = i;
             this.oBtn[i].onclick = this.Switch.bind(this);
         }
